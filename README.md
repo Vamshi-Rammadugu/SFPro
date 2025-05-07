@@ -8,3 +8,8 @@ This repository is to start my SF journey and gracefully update all the day to d
 4. Will be highlighting all the known issues I have created as part of Spring 25.
 5. Developed prompt template agents using Flows. This will help in auto translating a filed from a different language to english in another field
 6. Implmeneted the ECI functionality with SDR where it will automatically track all the mails coming to and fro of a lead and land them in activity.
+7. First contact for many of the Agentforce Solutions.
+8. Implemented many innovative ideas on salesforce Agentforce implementations.
+
+
+
