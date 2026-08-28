@@ -1,0 +1,11 @@
+.opp-card {
+    cursor: pointer;
+    background: white;
+    transition: box-shadow 0.15s ease-in-out;
+}
+
+.opp-card:hover,
+.opp-card:focus {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    outline: none;
+}

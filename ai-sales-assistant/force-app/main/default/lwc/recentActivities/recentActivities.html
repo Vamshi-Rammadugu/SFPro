@@ -1,0 +1,32 @@
+<template>
+    <lightning-card title="Recent Activities" icon-name="utility:date_time">
+        <div class="slds-p-horizontal_medium slds-p-bottom_medium">
+            <template if:true={errorMessage}>
+                <p class="slds-text-color_error">{errorMessage}</p>
+            </template>
+            <template if:true={hasTimeline}>
+                <ul class="slds-timeline">
+                    <template for:each={timeline} for:item="entry">
+                        <li key={entry.key} class="slds-timeline__item slds-p-bottom_x-small">
+                            <div class="slds-media">
+                                <div class="slds-media__figure">
+                                    <lightning-icon icon-name={entry.iconName} size="x-small"></lightning-icon>
+                                </div>
+                                <div class="slds-media__body">
+                                    <p class="slds-text-heading_x-small">{entry.label}</p>
+                                    <p class="slds-text-body_small slds-text-color_weak">{entry.detail}</p>
+                                    <p class="slds-text-body_small slds-text-color_weak">
+                                        <lightning-formatted-date-time value={entry.entryDate}></lightning-formatted-date-time>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                    </template>
+                </ul>
+            </template>
+            <template if:false={hasTimeline}>
+                <p class="slds-text-color_weak">{placeholderText}</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>

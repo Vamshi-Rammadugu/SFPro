@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Revenue_Forecast__c</fullName>
+    <description>AI-weighted revenue forecast for the deal (amount x confidence).</description>
+    <externalId>false</externalId>
+    <label>Revenue Forecast</label>
+    <precision>16</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

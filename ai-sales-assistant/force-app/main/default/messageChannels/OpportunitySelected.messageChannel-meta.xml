@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>Opportunity Selected</masterLabel>
+    <isExposed>true</isExposed>
+    <description>Broadcasts the currently selected opportunity id so independent AI Sales Assistant components stay in sync without a parent/child relationship.</description>
+    <lightningMessageFields>
+        <fieldName>recordId</fieldName>
+        <description>Id of the selected Opportunity record.</description>
+    </lightningMessageFields>
+</LightningMessageChannel>

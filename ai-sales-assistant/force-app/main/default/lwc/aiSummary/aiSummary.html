@@ -1,0 +1,15 @@
+<template>
+    <lightning-card title="AI Summary" icon-name="utility:einstein">
+        <div class="slds-p-horizontal_medium slds-p-bottom_medium">
+            <template if:true={errorMessage}>
+                <p class="slds-text-color_error">{errorMessage}</p>
+            </template>
+            <template if:true={hasSummary}>
+                <p>{summary}</p>
+            </template>
+            <template if:false={hasSummary}>
+                <p class="slds-text-color_weak">{placeholderText}</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>

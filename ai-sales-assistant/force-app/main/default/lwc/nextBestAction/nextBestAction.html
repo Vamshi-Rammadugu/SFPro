@@ -1,0 +1,23 @@
+<template>
+    <lightning-card title="Next Best Action" icon-name="utility:favorite">
+        <lightning-button
+            slot="actions"
+            label="Refresh with AI"
+            icon-name="utility:refresh"
+            disabled={isRefreshDisabled}
+            onclick={handleRefresh}
+        ></lightning-button>
+
+        <div class="slds-p-horizontal_medium slds-p-bottom_medium">
+            <template if:true={errorMessage}>
+                <p class="slds-text-color_error">{errorMessage}</p>
+            </template>
+            <template if:true={hasAction}>
+                <p>{action}</p>
+            </template>
+            <template if:false={hasAction}>
+                <p class="slds-text-color_weak">{placeholderText}</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>
