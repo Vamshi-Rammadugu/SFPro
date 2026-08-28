@@ -95,7 +95,7 @@ public with sharing class RiskAnalysisService {
             }
         }
 
-        if (opp.Probability != null && opp.Probability < 30 && !opp.IsClosed) {
+        if (opp.Probability != null && opp.Probability < 30 && opp.IsClosed != true) {
             score += 15;
             reasons.add('Win probability is below 30%');
         }

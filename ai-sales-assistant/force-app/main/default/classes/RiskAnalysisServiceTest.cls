@@ -4,7 +4,7 @@ private class RiskAnalysisServiceTest {
     @isTest
     static void testScoreOpportunityFlagsPastCloseDate() {
         AI_Config__mdt config = OpportunityService.getConfig();
-        Opportunity opp = new Opportunity(CloseDate = Date.today().addDays(-3), Probability = 90, Amount = 1000, IsClosed = false);
+        Opportunity opp = new Opportunity(CloseDate = Date.today().addDays(-3), Probability = 90, Amount = 1000);
 
         RiskScoreResult result = RiskAnalysisService.scoreOpportunity(opp, config, new List<Task>());
 
@@ -15,7 +15,7 @@ private class RiskAnalysisServiceTest {
     @isTest
     static void testScoreOpportunityRecentActivityAvoidsStalePenalty() {
         AI_Config__mdt config = OpportunityService.getConfig();
-        Opportunity opp = new Opportunity(CloseDate = Date.today().addDays(30), Probability = 80, Amount = 1000, IsClosed = false);
+        Opportunity opp = new Opportunity(CloseDate = Date.today().addDays(30), Probability = 80, Amount = 1000);
         Task recentTask = new Task(ActivityDate = Date.today());
 
         RiskScoreResult result = RiskAnalysisService.scoreOpportunity(opp, config, new List<Task>{ recentTask });
@@ -28,7 +28,7 @@ private class RiskAnalysisServiceTest {
     @isTest
     static void testScoreOpportunityNoActivityAddsPenalty() {
         AI_Config__mdt config = OpportunityService.getConfig();
-        Opportunity opp = new Opportunity(CloseDate = Date.today().addDays(30), Probability = 80, Amount = 1000, IsClosed = false);
+        Opportunity opp = new Opportunity(CloseDate = Date.today().addDays(30), Probability = 80, Amount = 1000);
 
         RiskScoreResult result = RiskAnalysisService.scoreOpportunity(opp, config, null);
 
@@ -38,7 +38,7 @@ private class RiskAnalysisServiceTest {
     @isTest
     static void testScoreOpportunityLowProbabilityAndLargeDeal() {
         AI_Config__mdt config = OpportunityService.getConfig();
-        Opportunity opp = new Opportunity(CloseDate = Date.today().addDays(30), Probability = 10, Amount = 200000, IsClosed = false);
+        Opportunity opp = new Opportunity(CloseDate = Date.today().addDays(30), Probability = 10, Amount = 200000);
         Task recentTask = new Task(ActivityDate = Date.today());
 
         RiskScoreResult result = RiskAnalysisService.scoreOpportunity(opp, config, new List<Task>{ recentTask });

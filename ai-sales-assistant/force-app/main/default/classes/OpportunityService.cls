@@ -145,7 +145,11 @@ public with sharing class OpportunityService {
         }
         activities.sort();
         if (limitCount != null && activities.size() > limitCount) {
-            activities = new List<ActivityWrapper>(new List<ActivityWrapper>(activities).subList(0, limitCount));
+            List<ActivityWrapper> trimmed = new List<ActivityWrapper>();
+            for (Integer i = 0; i < limitCount; i++) {
+                trimmed.add(activities[i]);
+            }
+            activities = trimmed;
         }
         return activities;
     }
