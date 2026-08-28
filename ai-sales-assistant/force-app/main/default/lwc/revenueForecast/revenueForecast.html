@@ -1,0 +1,38 @@
+<template>
+    <lightning-card title="Revenue Forecast" icon-name="utility:currency">
+        <div class="slds-p-horizontal_medium slds-p-bottom_medium">
+            <template if:true={errorMessage}>
+                <p class="slds-text-color_error">{errorMessage}</p>
+            </template>
+            <template if:true={hasForecast}>
+                <div class="slds-grid slds-grid_align-spread slds-grid_vertical-align-center slds-m-bottom_x-small">
+                    <lightning-formatted-number
+                        value={forecast.weightedAmount}
+                        format-style="currency"
+                        currency-code="USD"
+                        class="slds-text-heading_medium"
+                    ></lightning-formatted-number>
+                    <span class={categoryBadgeClass}>{forecast.forecastCategory}</span>
+                </div>
+                <p class="slds-text-body_small slds-text-color_weak">
+                    Full amount:
+                    <lightning-formatted-number
+                        value={forecast.amount}
+                        format-style="currency"
+                        currency-code="USD"
+                    ></lightning-formatted-number>
+                </p>
+                <p class="slds-text-body_small slds-text-color_weak">
+                    Confidence:
+                    <lightning-formatted-number value={forecast.confidence} format-style="percent"></lightning-formatted-number>
+                </p>
+                <p class="slds-text-body_small slds-text-color_weak">
+                    Expected close: <lightning-formatted-date-time value={forecast.expectedCloseDate}></lightning-formatted-date-time>
+                </p>
+            </template>
+            <template if:false={hasForecast}>
+                <p class="slds-text-color_weak">{placeholderText}</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>

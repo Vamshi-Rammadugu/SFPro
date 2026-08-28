@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>AI Sales Assistant User</label>
+    <description>Grants access to the AI Sales Assistant dashboard, its AI-generated Opportunity fields, and the ability to manually refresh AI recommendations.</description>
+
+    <classAccesses>
+        <apexClass>OpportunityDashboardController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+
+    <customPermissions>
+        <enabled>true</enabled>
+        <name>Manage_AI_Sales_Assistant</name>
+    </customPermissions>
+
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>false</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>Risk_Alert__e</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.Risk_Score__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.Risk_Level__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.AI_Summary__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.Next_Best_Action__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.Competitor_Insights__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.Revenue_Forecast__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Opportunity.AI_Last_Analyzed__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+</PermissionSet>

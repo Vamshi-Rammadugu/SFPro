@@ -1,0 +1,89 @@
+<template>
+    <lightning-card title="AI Sales Assistant" icon-name="standard:opportunity">
+        <lightning-button
+            slot="actions"
+            label="Refresh"
+            icon-name="utility:refresh"
+            onclick={handleRefresh}
+        ></lightning-button>
+
+        <template if:true={isLoading}>
+            <div class="slds-p-around_large slds-align_absolute-center">
+                <lightning-spinner alternative-text="Loading dashboard" size="small"></lightning-spinner>
+            </div>
+        </template>
+
+        <template if:true={errorMessage}>
+            <div class="slds-p-around_medium slds-text-color_error">{errorMessage}</div>
+        </template>
+
+        <template if:true={summary}>
+            <div class="slds-grid slds-wrap slds-gutters slds-p-around_medium">
+                <div class="slds-col slds-size_1-of-2 slds-medium-size_1-of-4">
+                    <div class="slds-box slds-text-align_center">
+                        <p class="slds-text-heading_large">{openOpportunities.length}</p>
+                        <p class="slds-text-body_small slds-text-color_weak">Open Opportunities</p>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-2 slds-medium-size_1-of-4">
+                    <div class="slds-box slds-text-align_center">
+                        <p class="slds-text-heading_large">{highRiskOpportunities.length}</p>
+                        <p class="slds-text-body_small slds-text-color_weak">High-risk Opportunities</p>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-2 slds-medium-size_1-of-4">
+                    <div class="slds-box slds-text-align_center">
+                        <p class="slds-text-heading_large">{upcomingTasks.length}</p>
+                        <p class="slds-text-body_small slds-text-color_weak">Upcoming Tasks</p>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-2 slds-medium-size_1-of-4">
+                    <div class="slds-box slds-text-align_center">
+                        <p class="slds-text-heading_large">{aiRecommendationCount}</p>
+                        <p class="slds-text-body_small slds-text-color_weak">AI Recommendations</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slds-grid slds-wrap slds-gutters slds-p-horizontal_medium">
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2">
+                    <h3 class="slds-text-heading_small slds-p-bottom_x-small">Open Opportunities</h3>
+                    <template for:each={openOpportunities} for:item="opp">
+                        <c-opportunity-card key={opp.opportunityId} opportunity={opp}></c-opportunity-card>
+                    </template>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2">
+                    <h3 class="slds-text-heading_small slds-p-bottom_x-small">High-risk Opportunities</h3>
+                    <template if:true={hasHighRiskOpportunities}>
+                        <template for:each={highRiskOpportunities} for:item="opp">
+                            <c-opportunity-card key={opp.opportunityId} opportunity={opp}></c-opportunity-card>
+                        </template>
+                    </template>
+                    <template if:false={hasHighRiskOpportunities}>
+                        <p class="slds-text-body_small slds-text-color_weak">No high-risk opportunities right now.</p>
+                    </template>
+                </div>
+            </div>
+
+            <div class="slds-p-around_medium">
+                <h3 class="slds-text-heading_small slds-p-bottom_x-small">Upcoming Tasks</h3>
+                <template if:true={hasUpcomingTasks}>
+                    <template for:each={upcomingTasks} for:item="task">
+                        <div
+                            key={task.taskId}
+                            class="slds-grid slds-grid_align-spread slds-border_bottom slds-p-vertical_x-small"
+                        >
+                            <span>{task.subject}</span>
+                            <span class="slds-text-body_small slds-text-color_weak"
+                                >{task.relatedTo} • {task.activityDate}</span
+                            >
+                        </div>
+                    </template>
+                </template>
+                <template if:false={hasUpcomingTasks}>
+                    <p class="slds-text-body_small slds-text-color_weak">No upcoming tasks in the next two weeks.</p>
+                </template>
+            </div>
+        </template>
+    </lightning-card>
+</template>

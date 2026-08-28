@@ -1,0 +1,15 @@
+<template>
+    <lightning-card title="Competitor Insights" icon-name="utility:search">
+        <div class="slds-p-horizontal_medium slds-p-bottom_medium">
+            <template if:true={errorMessage}>
+                <p class="slds-text-color_error">{errorMessage}</p>
+            </template>
+            <template if:true={hasInsights}>
+                <p>{insights}</p>
+            </template>
+            <template if:false={hasInsights}>
+                <p class="slds-text-color_weak">{placeholderText}</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>
